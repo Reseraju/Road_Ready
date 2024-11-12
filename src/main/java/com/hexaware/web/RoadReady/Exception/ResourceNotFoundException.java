@@ -1,10 +1,10 @@
 package com.hexaware.web.RoadReady.Exception;
 
-public class CarNotSavedException extends RuntimeException{
+public class ResourceNotFoundException extends Exception {
 	String msg;
 	
-	public CarNotSavedException(String msg) {
-		super();
+	public ResourceNotFoundException(String msg) {
+		super(msg);
 		this.msg = msg;
 	}
 	
