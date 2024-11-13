@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hexaware.web.RoadReady.DTO.CarDTO;
+import com.hexaware.web.RoadReady.DTO.UserDTO;
 import com.hexaware.web.RoadReady.Entity.Car;
 import com.hexaware.web.RoadReady.Exception.NotFoundException;
 import com.hexaware.web.RoadReady.Repository.CarRepo;
@@ -44,6 +46,12 @@ public class CarService {
 		car.setAvailability(carEntityObj.isAvailability());
 		
 		return repo.save(car);
+	}
+	
+	// find car by id
+	public Car getCarById(int carId) throws NotFoundException {
+		Car car = repo.findById(carId).orElseThrow(() -> new NotFoundException("Car not found with carId: " + carId));
+		return car;
 	}
 	
 	// DELETE A CAR BY ID

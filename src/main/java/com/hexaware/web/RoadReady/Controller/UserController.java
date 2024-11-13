@@ -1,7 +1,7 @@
 package com.hexaware.web.RoadReady.Controller;
 
 import com.hexaware.web.RoadReady.DTO.UserDTO;
-
+import com.hexaware.web.RoadReady.Entity.User;
 import com.hexaware.web.RoadReady.Service.UserService;
 
 import java.util.List;
@@ -36,7 +36,8 @@ public class UserController {
     //find user
     @GetMapping("/getUser/{userId}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable int userId) {
-        UserDTO userDTO = userService.getUserById(userId);
+        User user = userService.getUserById(userId);
+        UserDTO userDTO = modelMapper.map(user, UserDTO.class);
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
     

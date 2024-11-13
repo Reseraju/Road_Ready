@@ -35,9 +35,9 @@ public class UserService {
 	    
 	    
 	 // Find id
-	    public UserDTO getUserById(int userId) {
+	    public User getUserById(int userId) {
 	        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found with userId: " + userId));
-	        return modelMapper.map(user, UserDTO.class);
+	        return user;
 	    }
 	    
 	    //update

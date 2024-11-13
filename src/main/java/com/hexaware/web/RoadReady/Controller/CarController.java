@@ -25,7 +25,7 @@ import com.hexaware.web.RoadReady.Service.CarService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/cars")
+@RequestMapping("/cars")
 public class CarController {
 	@Autowired
 	ModelMapper model;

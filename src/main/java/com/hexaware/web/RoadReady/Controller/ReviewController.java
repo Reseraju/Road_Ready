@@ -24,7 +24,7 @@ import com.hexaware.web.RoadReady.Service.ReviewService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/review")
+@RequestMapping("/reviews")
 public class ReviewController {
 	@Autowired
 	ModelMapper model;
@@ -34,11 +34,11 @@ public class ReviewController {
 	
 	// --------------- ADD REVIEW ---------------
 	
-	@PostMapping("/saveNewReview")
-	public ResponseEntity<?> saveNewReview(@Valid @RequestBody  ReviewDTO review){
+	@PostMapping("/createReview")
+	public ResponseEntity<?> createReview(@Valid @RequestBody  ReviewDTO review) throws NotFoundException{
 		
-		Review rev = model.map(review, Review.class);
-		Review r = ser.saveReview(rev);
+		//Review rev = model.map(review, Review.class);
+		Review r = ser.saveReview(review);
 		
 		if(r == null) {
 			throw new NotSavedException("Could not save the review");
@@ -85,6 +85,6 @@ public class ReviewController {
 	@DeleteMapping("/deleteReviewById/{Id}")
 	public ResponseEntity<String> deleteReviewById(@PathVariable int Id) throws NotFoundException{
 		ser.deleteReview(Id);
-		return new ResponseEntity<>("Car deleted successfully!", HttpStatus.OK);
+		return new ResponseEntity<>("Review deleted successfully!", HttpStatus.OK);
 	}
 }
