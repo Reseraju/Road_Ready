@@ -11,11 +11,4 @@ public class RoadReadyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RoadReadyApplication.class, args);
 	}
-
-	@Bean
-	public ModelMapper modelMapper() {
-
-		return new ModelMapper();
-	}
-
 }
