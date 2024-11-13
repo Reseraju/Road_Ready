@@ -10,23 +10,18 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalEceptionController {
 	
-	@ExceptionHandler(CarNotFoundException.class)
-	public ResponseEntity<ErrorDetails> noCarFound(CarNotFoundException ex){
-		ErrorDetails error = new ErrorDetails(LocalDateTime.now(),ex.getMessage(),"location not found ","No_Customer_Found");
+	@ExceptionHandler(NotFoundException.class)
+	public ResponseEntity<ErrorDetails> noCarFound(NotFoundException ex){
+		ErrorDetails error = new ErrorDetails(LocalDateTime.now(),ex.getMessage(),"location not found ","Car_Not_Found");
 		return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
 	}
 	
-	@ExceptionHandler(ResourceNotFoundException.class)
-	public ResponseEntity<ErrorDetails> r4esourceNotF(ResourceNotFoundException ex){
-		ErrorDetails error = new ErrorDetails(LocalDateTime.now(),ex.getMessage(),"location not found ","No_Customer_Found");
-		return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
+	@ExceptionHandler(NotSavedException.class)
+	public ResponseEntity<ErrorDetails> notSavedEx(NotSavedException ex){
+		ErrorDetails error = new ErrorDetails(LocalDateTime.now(),ex.getMessage(),"location not found ","Not_Saved");
+		return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
 	}
 	
-	@ExceptionHandler(UpdateException.class)
-	public ResponseEntity<ErrorDetails> updateNotPossible(UpdateException ex){
-		ErrorDetails error = new ErrorDetails(LocalDateTime.now(),ex.getMessage(),"location not found ","No_Customer_Found");
-		return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
-	}
 	
 	@ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGenericException(Exception ex) {

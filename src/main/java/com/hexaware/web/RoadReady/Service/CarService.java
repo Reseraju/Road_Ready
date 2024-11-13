@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.web.RoadReady.Entity.Car;
-import com.hexaware.web.RoadReady.Exception.CarNotFoundException;
-import com.hexaware.web.RoadReady.Exception.UpdateException;
+import com.hexaware.web.RoadReady.Exception.NotFoundException;
 import com.hexaware.web.RoadReady.Repository.CarRepo;
 
 @Service
@@ -31,9 +30,9 @@ public class CarService {
 	}
 
 	// UPDATE CAR DETAILS
-	public Car updateCar(int carId, Car carEntityObj) throws UpdateException {
+	public Car updateCar(int carId, Car carEntityObj) throws NotFoundException {
 		
-		Car car = repo.findById(carId).orElseThrow(() -> new UpdateException("Car details cannot be updated!"));
+		Car car = repo.findById(carId).orElseThrow(() -> new NotFoundException("Car details cannot be updated! Because Car not found"));
 		
 		car.setMake(carEntityObj.getMake());
 		car.setModel(carEntityObj.getModel());
@@ -41,18 +40,29 @@ public class CarService {
 		car.setImageURL(carEntityObj.getImageURL());
 		car.setSpecifications(carEntityObj.getSpecifications());
 		car.setPricePerDay(carEntityObj.getPricePerDay());
+		car.setCarType(carEntityObj.getCarType());
 		car.setAvailability(carEntityObj.isAvailability());
 		
 		return repo.save(car);
 	}
-
-	public void deleteCarById(int id) throws CarNotFoundException {
+	
+	// DELETE A CAR BY ID
+	public void deleteCarById(int id) throws NotFoundException {
 		
 		if(!repo.existsById(id)) {
-			throw new CarNotFoundException("Car not found!");
+			throw new NotFoundException("Car not found!");
 		}
 		
 		repo.deleteById(id);
+	}
+	
+	// search Car By CarType
+	public List<Car> findCarByType(String type) throws NotFoundException {
+		List<Car> cars = repo.findByCarTypeIgnoreCase(type);
 		
+		if (cars.isEmpty()) {
+            throw new NotFoundException("No cars found for type: " + type);
+        }
+		return cars;
 	}
 }

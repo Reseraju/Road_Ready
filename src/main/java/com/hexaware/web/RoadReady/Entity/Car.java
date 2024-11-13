@@ -33,6 +33,9 @@ public class Car {
 
     @Positive(message = "Price per day must be positive")
     private double pricePerDay;
+    
+    @NotNull(message = "Please enter the car type")
+    private String carType;
 
     private boolean availability;
     
@@ -40,13 +43,14 @@ public class Car {
     	
     }
 
-	public Car(int carId,
+    public Car(int carId,
 			@NotNull(message = "Please enter Make") @Size(min = 2, max = 50, message = "Make should be between 2 and 50 characters") String make,
 			@NotNull(message = "Please enter Model") @Size(min = 2, max = 50, message = "Model should be between 2 and 50 characters") String model,
 			@NotNull(message = "Please enter Location") @Size(min = 2, max = 100, message = "Location should be between 2 and 100 characters") String location,
 			@NotNull(message = "Please enter the image URL") @Pattern(regexp = "^(https?|ftp)://[^\\s/$.?#].[^\\s]*$", message = "Please enter a valid URL") String imageURL,
 			@Size(max = 1000, message = "Specifications should not exceed 1000 characters") String specifications,
-			@Positive(message = "Price per day must be positive") double pricePerDay, boolean availability) {
+			@Positive(message = "Price per day must be positive") double pricePerDay,
+			@NotNull(message = "Please enter the car type") String carType, boolean availability) {
 		super();
 		this.carId = carId;
 		this.make = make;
@@ -55,6 +59,7 @@ public class Car {
 		this.imageURL = imageURL;
 		this.specifications = specifications;
 		this.pricePerDay = pricePerDay;
+		this.carType = carType;
 		this.availability = availability;
 	}
 
@@ -114,6 +119,16 @@ public class Car {
 		this.pricePerDay = pricePerDay;
 	}
 
+	
+
+	public String getCarType() {
+		return carType;
+	}
+
+	public void setCarType(String carType) {
+		this.carType = carType;
+	}
+
 	public boolean isAvailability() {
 		return availability;
 	}
@@ -125,9 +140,8 @@ public class Car {
 	@Override
 	public String toString() {
 		return "Car [carId=" + carId + ", make=" + make + ", model=" + model + ", location=" + location + ", imageURL="
-				+ imageURL + ", specifications=" + specifications + ", pricePerDay=" + pricePerDay + ", availability="
-				+ availability + "]";
+				+ imageURL + ", specifications=" + specifications + ", pricePerDay=" + pricePerDay + ", carType="
+				+ carType + ", availability=" + availability + "]";
 	}
-    
 	
 }

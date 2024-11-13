@@ -1,10 +1,10 @@
 package com.hexaware.web.RoadReady.Exception;
 
-public class UpdateException extends Exception{
+public class NotSavedException extends RuntimeException{
 	String msg;
 	
-	public UpdateException(String msg){
-		super(msg);
+	public NotSavedException(String msg) {
+		super();
 		this.msg = msg;
 	}
 	

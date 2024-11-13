@@ -8,16 +8,16 @@ public class CarDTO {
     private String imageURL;
     private String specifications;
     private double pricePerDay;
+    private String carType;
     private boolean availability;
     
     public CarDTO() {
     	
     }
-    
-    
+
 
 	public CarDTO(int carId, String make, String model, String location, String imageURL, String specifications,
-			double pricePerDay, boolean availability) {
+			double pricePerDay, String carType, boolean availability) {
 		super();
 		this.carId = carId;
 		this.make = make;
@@ -26,10 +26,9 @@ public class CarDTO {
 		this.imageURL = imageURL;
 		this.specifications = specifications;
 		this.pricePerDay = pricePerDay;
+		this.carType = carType;
 		this.availability = availability;
 	}
-
-
 
 	public int getCarId() {
 		return carId;
@@ -87,6 +86,16 @@ public class CarDTO {
 		this.pricePerDay = pricePerDay;
 	}
 
+	public String getCarType() {
+		return carType;
+	}
+
+
+	public void setCarType(String carType) {
+		this.carType = carType;
+	}
+
+
 	public boolean isAvailability() {
 		return availability;
 	}
@@ -96,13 +105,11 @@ public class CarDTO {
 	}
 
 
-
 	@Override
 	public String toString() {
 		return "CarDTO [carId=" + carId + ", make=" + make + ", model=" + model + ", location=" + location
 				+ ", imageURL=" + imageURL + ", specifications=" + specifications + ", pricePerDay=" + pricePerDay
-				+ ", availability=" + availability + "]";
+				+ ", carType=" + carType + ", availability=" + availability + "]";
 	}
-    
-    
+
 }

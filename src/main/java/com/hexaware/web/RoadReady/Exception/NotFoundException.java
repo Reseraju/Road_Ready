@@ -1,9 +1,8 @@
 package com.hexaware.web.RoadReady.Exception;
 
-public class ResourceNotFoundException extends Exception {
+public class NotFoundException extends Exception{
 	String msg;
-	
-	public ResourceNotFoundException(String msg) {
+	public NotFoundException(String msg){
 		super(msg);
 		this.msg = msg;
 	}
