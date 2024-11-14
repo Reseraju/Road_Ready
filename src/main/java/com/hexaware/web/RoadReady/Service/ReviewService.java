@@ -15,7 +15,7 @@ import com.hexaware.web.RoadReady.Exception.NotFoundException;
 import com.hexaware.web.RoadReady.Repository.ReviewRepo;
 
 @Service
-public class ReviewService {
+public class ReviewService implements IReviewService{
 	
 	@Autowired 
 	ReviewRepo repo;

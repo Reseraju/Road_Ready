@@ -2,6 +2,7 @@ package com.hexaware.web.RoadReady.Controller;
 
 import com.hexaware.web.RoadReady.DTO.UserDTO;
 import com.hexaware.web.RoadReady.Entity.User;
+import com.hexaware.web.RoadReady.Service.IUserService;
 import com.hexaware.web.RoadReady.Service.UserService;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/users")
 @Validated
-public class UserController {
+public class UserController implements IUserService{
 
     @Autowired
     private UserService userService;

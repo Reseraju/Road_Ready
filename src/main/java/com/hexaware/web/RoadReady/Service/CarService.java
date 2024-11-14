@@ -12,7 +12,7 @@ import com.hexaware.web.RoadReady.Exception.NotFoundException;
 import com.hexaware.web.RoadReady.Repository.CarRepo;
 
 @Service
-public class CarService {
+public class CarService implements ICarService {
 	@Autowired
 	CarRepo repo;
 	
