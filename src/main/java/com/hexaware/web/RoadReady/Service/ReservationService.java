@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.web.RoadReady.DTO.ReservationDTO;
+import com.hexaware.web.RoadReady.Entity.Car;
 import com.hexaware.web.RoadReady.Entity.Reservation;
+import com.hexaware.web.RoadReady.Entity.User;
+import com.hexaware.web.RoadReady.Exception.NotFoundException;
 import com.hexaware.web.RoadReady.Exception.ReservationNotFoundException;
 import com.hexaware.web.RoadReady.Repository.ReservationRepository;
 
@@ -16,9 +19,25 @@ public class ReservationService {
 
     @Autowired
     private ModelMapper modelMapper;
-
-    public ReservationDTO saveReservation(ReservationDTO reservationDTO) {
+    
+    @Autowired
+    private UserService userService;
+    
+    @Autowired
+    private CarService carService;
+    
+    public ReservationDTO saveReservation(ReservationDTO reservationDTO) throws NotFoundException {
+        
+        // Fetch User and Car entities using IDs from ReviewDTO
+        User user = userService.getUserById(reservationDTO.getUserId());
+        Car car = carService.getCarById(reservationDTO.getCarId());
+        
         Reservation reservation = modelMapper.map(reservationDTO, Reservation.class);
+        
+        // Set the User and Car entities in the Review
+        reservation.setUser(user);
+        reservation.setCar(car);
+        
         Reservation savedReservation = reservationRepository.save(reservation);
         return modelMapper.map(savedReservation, ReservationDTO.class);
     }

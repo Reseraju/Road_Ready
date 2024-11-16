@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.hexaware.web.RoadReady.DTO.ReservationDTO;
+import com.hexaware.web.RoadReady.Exception.NotFoundException;
 import com.hexaware.web.RoadReady.Service.ReservationService;
 
 import jakarta.validation.Valid;
@@ -18,7 +19,7 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @PostMapping("/saveNewReservation")
-    public ResponseEntity<ReservationDTO> saveNewReservation(@Valid @RequestBody ReservationDTO reservationDTO) {
+    public ResponseEntity<ReservationDTO> saveNewReservation(@Valid @RequestBody ReservationDTO reservationDTO) throws NotFoundException {
         ReservationDTO savedReservationDTO = reservationService.saveReservation(reservationDTO);
         return new ResponseEntity<>(savedReservationDTO, HttpStatus.CREATED);
     }

@@ -2,87 +2,128 @@ package com.hexaware.web.RoadReady.DTO;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
 public class ReservationDTO {
-    private Integer reservationId;
-    private Integer userId;
-    private Integer carId;
+    private int reservationId;
+    private int userId;
+    private int carId;
     private LocalDate pickupDate;
     private LocalDate dropoffDate;
     private LocalTime pickupTime;
     private LocalTime dropoffTime;
     private Double extraCharge;
     private String reservationStatus;
-
-    public Integer getReservationId() {
-        return reservationId;
+    private Date createdAt;
+    
+    public ReservationDTO() {
+    	
     }
 
-    public void setReservationId(Integer reservationId) {
-        this.reservationId = reservationId;
-    }
+	public ReservationDTO(int reservationId, int userId, int carId, LocalDate pickupDate, LocalDate dropoffDate,
+			LocalTime pickupTime, LocalTime dropoffTime, Double extraCharge, String reservationStatus, Date createdAt) {
+		super();
+		this.reservationId = reservationId;
+		this.userId = userId;
+		this.carId = carId;
+		this.pickupDate = pickupDate;
+		this.dropoffDate = dropoffDate;
+		this.pickupTime = pickupTime;
+		this.dropoffTime = dropoffTime;
+		this.extraCharge = extraCharge;
+		this.reservationStatus = reservationStatus;
+		this.createdAt = createdAt;
+	}
 
-    public Integer getUserId() {
-        return userId;
-    }
+	public int getReservationId() {
+		return reservationId;
+	}
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+	public void setReservationId(int reservationId) {
+		this.reservationId = reservationId;
+	}
 
-    public Integer getCarId() {
-        return carId;
-    }
+	public int getUserId() {
+		return userId;
+	}
 
-    public void setCarId(Integer carId) {
-        this.carId = carId;
-    }
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
-    public LocalDate getPickupDate() {
-        return pickupDate;
-    }
+	public int getCarId() {
+		return carId;
+	}
 
-    public void setPickupDate(LocalDate pickupDate) {
-        this.pickupDate = pickupDate;
-    }
+	public void setCarId(int carId) {
+		this.carId = carId;
+	}
 
-    public LocalDate getDropoffDate() {
-        return dropoffDate;
-    }
+	public LocalDate getPickupDate() {
+		return pickupDate;
+	}
 
-    public void setDropoffDate(LocalDate dropoffDate) {
-        this.dropoffDate = dropoffDate;
-    }
+	public void setPickupDate(LocalDate pickupDate) {
+		this.pickupDate = pickupDate;
+	}
 
-    public LocalTime getPickupTime() {
-        return pickupTime;
-    }
+	public LocalDate getDropoffDate() {
+		return dropoffDate;
+	}
 
-    public void setPickupTime(LocalTime pickupTime) {
-        this.pickupTime = pickupTime;
-    }
+	public void setDropoffDate(LocalDate dropoffDate) {
+		this.dropoffDate = dropoffDate;
+	}
 
-    public LocalTime getDropoffTime() {
-        return dropoffTime;
-    }
+	public LocalTime getPickupTime() {
+		return pickupTime;
+	}
 
-    public void setDropoffTime(LocalTime dropoffTime) {
-        this.dropoffTime = dropoffTime;
-    }
+	public void setPickupTime(LocalTime pickupTime) {
+		this.pickupTime = pickupTime;
+	}
 
-    public Double getExtraCharge() {
-        return extraCharge;
-    }
+	public LocalTime getDropoffTime() {
+		return dropoffTime;
+	}
 
-    public void setExtraCharge(Double extraCharge) {
-        this.extraCharge = extraCharge;
-    }
+	public void setDropoffTime(LocalTime dropoffTime) {
+		this.dropoffTime = dropoffTime;
+	}
 
-    public String getReservationStatus() {
-        return reservationStatus;
-    }
+	public Double getExtraCharge() {
+		return extraCharge;
+	}
 
-    public void setReservationStatus(String reservationStatus) {
-        this.reservationStatus = reservationStatus;
-    }
+	public void setExtraCharge(Double extraCharge) {
+		this.extraCharge = extraCharge;
+	}
+
+	public String getReservationStatus() {
+		return reservationStatus;
+	}
+
+	public void setReservationStatus(String reservationStatus) {
+		this.reservationStatus = reservationStatus;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	@Override
+	public String toString() {
+		return "ReservationDTO [reservationId=" + reservationId + ", userId=" + userId + ", carId=" + carId
+				+ ", pickupDate=" + pickupDate + ", dropoffDate=" + dropoffDate + ", pickupTime=" + pickupTime
+				+ ", dropoffTime=" + dropoffTime + ", extraCharge=" + extraCharge + ", reservationStatus="
+				+ reservationStatus + ", createdAt=" + createdAt + "]";
+	}
+
+    
+
+	
 }

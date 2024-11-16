@@ -8,7 +8,7 @@ public class CarDTO {
     private String imageURL;
     private String specifications;
     private Double pricePerDay;
-    private Boolean availability;
+    private boolean availability;
 
     public Integer getCarId() {
         return carId;
@@ -66,11 +66,11 @@ public class CarDTO {
         this.pricePerDay = pricePerDay;
     }
 
-    public Boolean getAvailability() {
+    public boolean getAvailability() {
         return availability;
     }
 
-    public void setAvailability(Boolean availability) {
+    public void setAvailability(boolean availability) {
         this.availability = availability;
     }
 }
