@@ -1,115 +1,76 @@
 package com.hexaware.web.RoadReady.DTO;
 
 public class CarDTO {
-    private int carId;
+    private Integer carId;
     private String make;
     private String model;
     private String location;
     private String imageURL;
     private String specifications;
-    private double pricePerDay;
-    private String carType;
-    private boolean availability;
-    
-    public CarDTO() {
-    	
+    private Double pricePerDay;
+    private Boolean availability;
+
+    public Integer getCarId() {
+        return carId;
     }
 
+    public void setCarId(Integer carId) {
+        this.carId = carId;
+    }
 
-	public CarDTO(int carId, String make, String model, String location, String imageURL, String specifications,
-			double pricePerDay, String carType, boolean availability) {
-		super();
-		this.carId = carId;
-		this.make = make;
-		this.model = model;
-		this.location = location;
-		this.imageURL = imageURL;
-		this.specifications = specifications;
-		this.pricePerDay = pricePerDay;
-		this.carType = carType;
-		this.availability = availability;
-	}
+    public String getMake() {
+        return make;
+    }
 
-	public int getCarId() {
-		return carId;
-	}
+    public void setMake(String make) {
+        this.make = make;
+    }
 
-	public void setCarId(int carId) {
-		this.carId = carId;
-	}
+    public String getModel() {
+        return model;
+    }
 
-	public String getMake() {
-		return make;
-	}
+    public void setModel(String model) {
+        this.model = model;
+    }
 
-	public void setMake(String make) {
-		this.make = make;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	public String getModel() {
-		return model;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
-	public void setModel(String model) {
-		this.model = model;
-	}
+    public String getImageURL() {
+        return imageURL;
+    }
 
-	public String getLocation() {
-		return location;
-	}
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public String getSpecifications() {
+        return specifications;
+    }
 
-	public String getImageURL() {
-		return imageURL;
-	}
+    public void setSpecifications(String specifications) {
+        this.specifications = specifications;
+    }
 
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
-	}
+    public Double getPricePerDay() {
+        return pricePerDay;
+    }
 
-	public String getSpecifications() {
-		return specifications;
-	}
+    public void setPricePerDay(Double pricePerDay) {
+        this.pricePerDay = pricePerDay;
+    }
 
-	public void setSpecifications(String specifications) {
-		this.specifications = specifications;
-	}
+    public Boolean getAvailability() {
+        return availability;
+    }
 
-	public double getPricePerDay() {
-		return pricePerDay;
-	}
-
-	public void setPricePerDay(double pricePerDay) {
-		this.pricePerDay = pricePerDay;
-	}
-
-	public String getCarType() {
-		return carType;
-	}
-
-
-	public void setCarType(String carType) {
-		this.carType = carType;
-	}
-
-
-	public boolean isAvailability() {
-		return availability;
-	}
-
-	public void setAvailability(boolean availability) {
-		this.availability = availability;
-	}
-
-
-	@Override
-	public String toString() {
-		return "CarDTO [carId=" + carId + ", make=" + make + ", model=" + model + ", location=" + location
-				+ ", imageURL=" + imageURL + ", specifications=" + specifications + ", pricePerDay=" + pricePerDay
-				+ ", carType=" + carType + ", availability=" + availability + "]";
-	}
-
+    public void setAvailability(Boolean availability) {
+        this.availability = availability;
+    }
 }
