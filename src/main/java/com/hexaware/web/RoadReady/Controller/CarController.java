@@ -36,19 +36,19 @@ public class CarController {
 	CarService ser;
 	
 	
-	//----------------- FOR SPRING SECURITY IMPLEMENTATION --------------------
-	// sample home page
-	@GetMapping("/")
-	public String greet(HttpServletRequest request) {
-		return "Welcome to cars " + request.getSession().getId();
-	}
-	
-	// getting csrf token
-	@GetMapping("/csrf-token")
-	public CsrfToken csrfToken(HttpServletRequest request) {
-		return (CsrfToken) request.getAttribute("_csrf");
-	}
-	
+//	//----------------- FOR SPRING SECURITY IMPLEMENTATION --------------------
+//	// sample home page
+//	@GetMapping("/")
+//	public String greet(HttpServletRequest request) {
+//		return "Welcome to cars " + request.getSession().getId();
+//	}
+//	
+//	// getting csrf token
+//	@GetMapping("/csrf-token")
+//	public CsrfToken csrfToken(HttpServletRequest request) {
+//		return (CsrfToken) request.getAttribute("_csrf");
+//	}
+//	
 	
 	
 	

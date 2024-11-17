@@ -12,6 +12,9 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,9 +22,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements UserDetailsService{
+public class UserService{
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	JWTService jwtService;
+	
+	@Autowired
+	AuthenticationManager authManager;
 	
 	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 	
@@ -43,7 +52,7 @@ public class UserService implements UserDetailsService{
 	    }
 	    
 	    
-	 // Find id
+	 	// Find id
 	    public User getUserById(int userId) {
 	        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found with userId: " + userId));
 	        return user;
@@ -74,17 +83,19 @@ public class UserService implements UserDetailsService{
 	        return users.stream().map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList());
 	    }
 
-
-		@Override
-		public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	    
+	    
+	    // verifying a user
+		public String verify(UserDTO userDTO) {
+			User user = modelMapper.map(userDTO, User.class);
 			
-			User user = userRepository.findByUsername(username);
+			Authentication authentication = 
+					authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 			
-			if(user == null) {
-				System.out.println("User not found");
-				throw new UsernameNotFoundException("User not found");
+			if(authentication.isAuthenticated()) {
+				return jwtService.generateToken(user.getUsername());
 			}
-			return new UserPrincipal(user);
+			return "fail";
 		}
 
 }

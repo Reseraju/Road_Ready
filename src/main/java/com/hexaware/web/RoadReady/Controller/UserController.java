@@ -19,7 +19,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/users")
 @Validated
-public class UserController implements IUserService{
+public class UserController{
 
     @Autowired
     private UserService userService;
@@ -32,6 +32,11 @@ public class UserController implements IUserService{
     public ResponseEntity<UserDTO> saveNewUser(@Valid @RequestBody UserDTO userDTO) {
         UserDTO savedUserDTO = userService.saveUser(userDTO);
         return new ResponseEntity<>(savedUserDTO, HttpStatus.CREATED);
+    }
+    
+    @PostMapping("/login")
+    public String login(@RequestBody UserDTO userDTO) {
+    	return userService.verify(userDTO);
     }
     
     //find user
