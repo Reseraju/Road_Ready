@@ -15,12 +15,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService implements UserDetailsService{
 	@Autowired
 	UserRepository userRepository;
+	
+	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 	
 	 @Autowired
 	    private ModelMapper modelMapper;
@@ -30,6 +33,7 @@ public class UserService implements UserDetailsService{
 	        User user = modelMapper.map(userDTO, User.class);
 
 	        try {
+	        	user.setPassword(encoder.encode(user.getPassword()));
 	            User savedUser = userRepository.save(user);
 	            return modelMapper.map(savedUser, UserDTO.class);
 	        } catch (Exception e) {
