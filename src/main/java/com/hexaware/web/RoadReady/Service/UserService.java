@@ -1,6 +1,7 @@
 package com.hexaware.web.RoadReady.Service;
 
 import com.hexaware.web.RoadReady.DTO.UserDTO;
+import com.hexaware.web.RoadReady.DTO.UserPrincipal;
 import com.hexaware.web.RoadReady.Entity.User;
 import com.hexaware.web.RoadReady.Exception.UserNotFoundException;
 import com.hexaware.web.RoadReady.Exception.UserNotSavedException;
@@ -11,10 +12,13 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService{
 	@Autowired
 	UserRepository userRepository;
 	
@@ -29,6 +33,7 @@ public class UserService {
 	            User savedUser = userRepository.save(user);
 	            return modelMapper.map(savedUser, UserDTO.class);
 	        } catch (Exception e) {
+	        	e.printStackTrace();
 	            throw new UserNotSavedException("Could not save the user with userId: " + userDTO.getUserId());
 	        }
 	    }
@@ -64,5 +69,18 @@ public class UserService {
 	        List<User> users = userRepository.findAll();
 	        return users.stream().map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList());
 	    }
+
+
+		@Override
+		public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+			
+			User user = userRepository.findByUsername(username);
+			
+			if(user == null) {
+				System.out.println("User not found");
+				throw new UsernameNotFoundException("User not found");
+			}
+			return new UserPrincipal(user);
+		}
 
 }

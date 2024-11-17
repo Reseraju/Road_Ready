@@ -1,7 +1,7 @@
 package com.hexaware.web.RoadReady.DTO;
 
 public class UserDTO {
-    private Integer userId;
+    private int userId;
     private String firstName;
     private String lastName;
     private String email;
@@ -9,12 +9,34 @@ public class UserDTO {
     private String phoneNo;
     private String licenseNo;
     private String userType;
+    private String username;
+    
+    public UserDTO() {
+    	
+    }
+   
+	public UserDTO(int userId, String firstName, String lastName, String email, String password, String phoneNo,
+			String licenseNo, String userType, String username) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.phoneNo = phoneNo;
+		this.licenseNo = licenseNo;
+		this.userType = userType;
+		this.username = username;
+	}
 
-    public Integer getUserId() {
+
+
+
+	public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -73,4 +95,13 @@ public class UserDTO {
     public void setUserType(String userType) {
         this.userType = userType;
     }
+    
+    public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 }

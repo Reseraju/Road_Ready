@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import com.hexaware.web.RoadReady.Exception.NotFoundException;
 import com.hexaware.web.RoadReady.Exception.NotSavedException;
 import com.hexaware.web.RoadReady.Service.CarService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @RestController
@@ -32,6 +34,22 @@ public class CarController {
 	
 	@Autowired
 	CarService ser;
+	
+	
+	//----------------- FOR SPRING SECURITY IMPLEMENTATION --------------------
+	// sample home page
+	@GetMapping("/")
+	public String greet(HttpServletRequest request) {
+		return "Welcome to cars " + request.getSession().getId();
+	}
+	
+	// getting csrf token
+	@GetMapping("/csrf-token")
+	public CsrfToken csrfToken(HttpServletRequest request) {
+		return (CsrfToken) request.getAttribute("_csrf");
+	}
+	
+	
 	
 	
 	// ------------------ SAVE NEW CAR ------------------
