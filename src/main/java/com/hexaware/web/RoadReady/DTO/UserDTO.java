@@ -1,36 +1,33 @@
 package com.hexaware.web.RoadReady.DTO;
 
+import com.hexaware.web.RoadReady.enums.UserType;
+
 public class UserDTO {
     private int userId;
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
     private String phoneNo;
     private String licenseNo;
-    private String userType;
+    private UserType userType;
     private String username;
     
     public UserDTO() {
     	
     }
-   
-	public UserDTO(int userId, String firstName, String lastName, String email, String password, String phoneNo,
-			String licenseNo, String userType, String username) {
+    
+	public UserDTO(int userId, String firstName, String lastName, String email, String phoneNo, String licenseNo,
+			UserType userType, String username) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.password = password;
 		this.phoneNo = phoneNo;
 		this.licenseNo = licenseNo;
 		this.userType = userType;
 		this.username = username;
 	}
-
-
-
 
 	public int getUserId() {
         return userId;
@@ -64,13 +61,7 @@ public class UserDTO {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+   
 
     public String getPhoneNo() {
         return phoneNo;
@@ -87,16 +78,17 @@ public class UserDTO {
     public void setLicenseNo(String licenseNo) {
         this.licenseNo = licenseNo;
     }
-
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
     
-    public String getUsername() {
+    
+    public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
+	}
+
+	public String getUsername() {
 		return username;
 	}
 

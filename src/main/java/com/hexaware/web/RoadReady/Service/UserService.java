@@ -90,10 +90,10 @@ public class UserService{
 			User user = modelMapper.map(userDTO, User.class);
 			
 			Authentication authentication = 
-					authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+					authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
 			
 			if(authentication.isAuthenticated()) {
-				return jwtService.generateToken(user.getUsername());
+				return jwtService.generateToken(user.getEmail());
 			}
 			return "fail";
 		}

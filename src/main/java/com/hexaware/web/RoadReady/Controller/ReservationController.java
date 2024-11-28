@@ -13,6 +13,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/reservations")
+@CrossOrigin("http://localhost:3000")
 public class ReservationController {
 
     @Autowired
