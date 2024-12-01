@@ -21,8 +21,6 @@ public class PaymentService {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @Autowired
-    private ReservationRepository reservationRepository;
 
     @Autowired
     private ModelMapper modelMapper;

@@ -1,5 +1,7 @@
 package com.hexaware.web.RoadReady.Service;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,4 +63,23 @@ public class ReservationService {
                 .orElseThrow(() -> new ReservationNotFoundException("Reservation with ID " + reservationId + " not found."));
         reservationRepository.delete(reservation);
     }
+
+	public List<Reservation> showAllReservations() {
+		List<Reservation> reservations = reservationRepository.findAll();
+		if(reservations.isEmpty()) {
+			return null;
+		}
+		return reservations;
+	}
+
+	public List<Reservation> showReservationsByUserId(int userId) {
+		List<Reservation> reservations = reservationRepository.findByUser_UserId(userId);
+		
+		if(reservations.isEmpty()) {
+			return null;
+		}
+		
+		return reservations;
+	}
+
 }

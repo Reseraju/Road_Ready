@@ -86,7 +86,7 @@ public class CarController {
 		}
 		
 		if(cars.isEmpty()) {
-			throw new NotFoundException("No records found in database");
+			throw new NotFoundException("No cars found in database");
 		}
 		else {
 			return new ResponseEntity<>(cars, HttpStatus.OK);

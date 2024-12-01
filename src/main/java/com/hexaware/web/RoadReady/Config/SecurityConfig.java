@@ -42,7 +42,7 @@ public class SecurityConfig {
 				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 				.csrf(customizer -> customizer.disable())
 		.authorizeHttpRequests(request -> request
-				.requestMatchers("users/saveNewUser", "users/login", "/api/auth/**")
+				.requestMatchers("users/saveNewUser", "users/login", "/api/auth/**", "/cars/getAllCars")
 				.permitAll()
 				.anyRequest().authenticated())
 		.httpBasic(Customizer.withDefaults())
