@@ -50,6 +50,11 @@ public class UserService{
 	            throw new UserNotSavedException("Could not save the user with userId: " + userDTO.getUserId());
 	        }
 	    }
+	 	
+	 	// GET TOTAL NO. OF USERS
+		public long getTotalUsers() {
+			return userRepository.countTotalUsers();
+		}
 	    
 	    
 	 	// Find id

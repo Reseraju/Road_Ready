@@ -30,6 +30,11 @@ public class CarService implements ICarService {
 		}
 		return cars;
 	}
+	
+	// GET TOTAL NO. OF CARS
+	public long getTotalCars() {
+		return repo.countTotalCars();
+	}
 
 	// UPDATE CAR DETAILS
 	public Car updateCar(int carId, Car carEntityObj) throws NotFoundException {

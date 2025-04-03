@@ -14,4 +14,7 @@ public interface CarRepo extends JpaRepository<Car, Integer>{
 	@Query("SELECT c FROM Car c WHERE LOWER(c.carType) = LOWER(:carType)")
     List<Car> findByCarTypeIgnoreCase(@Param("carType") String carType);
 	
+	
+	@Query("SELECT COUNT(c) FROM Car c")
+	long countTotalCars();
 }

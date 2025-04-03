@@ -132,4 +132,13 @@ public class CarController {
 		return new ResponseEntity<>("Car deleted successfully!", HttpStatus.OK);
 		
 	}
+	
+	
+	// ------------------ GET TOTAL CARS ------------------
+	
+	@GetMapping("/getTotalNoOfCars")
+	public long getTotalCars() {
+		return ser.getTotalCars();
+	}
+	
 }

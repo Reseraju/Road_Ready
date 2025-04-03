@@ -66,5 +66,12 @@ public class UserController{
         List<UserDTO> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
+    
+ // ------------------ GET TOTAL USERS ------------------
+	
+ 	@GetMapping("/getTotalNoOfUsers")
+ 	public Long getTotalUsers() {
+ 		return userService.getTotalUsers();
+ 	}
 }
 
